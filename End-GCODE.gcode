@@ -1,4 +1,4 @@
-; MODIFIED PRUSA ORIGINAL START G-CODE
+; MODIFIED PRUSA ORIGINAL END G-CODE
 
 {if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+1, max_print_height)} F720 ; Move print head up{endif}
 
@@ -6,9 +6,9 @@ G1 Y210 X110 ; Controlled move to Y-axis maximum and X-center
 
 M107 ; turn off fan
 M140 S0 ; Set bed temperature to 0
-M190 R0 ; Wait for the bed to cool down to 30
+M104 S0 ; Set extruder temperature to 0
+M190 R30 ; Wait for the bed to cool down to 30
 
-G28 Z     ; Home the Z-axis
 G1 Z2     ; Move the Z-axis to 2mm above the build plate
 
 ; PUSH PUSH PUSH..
