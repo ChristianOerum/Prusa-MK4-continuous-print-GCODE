@@ -64,12 +64,14 @@ M569 S0 E ; set spreadcycle mode for extruder
 
 G92 E0 ; reset extruder position
 G1 E{(filament_type[0] == "FLEX" ? 4 : 2)} F2400 ; deretraction after the initial one before nozzle cleaning
-G0 E7 X105 Z0.2 F500 ; purge STOCK SETTING = X15
-G0 X115 E4 F500 ; purge STOCK SETTING = X25
-G0 X125 E4 F650 ; purge STOCK SETTING = X35
-G0 X135 E4 F800 ; purge STOCK SETTING = X45
-G0 X{135 + 3} Z{0.05} F{8000} ; wipe, move close to the bed STOCK SETTING = X45
-G0 X{135 + 3 * 2} Z0.2 F{8000} ; wipe, move quickly away from the bed STOCK SETTING = X45
+G0 Z7 X7 ;  move closer to print bed
+G0 E25 F1000 ;  GLOB purge
+G0 E4 X20 Z0.2 F500 ; purge
+G0 X30 E4 F500 ; purge
+G0 X40 E4 F650 ; purge
+G0 X50 E4 F800 ; purge
+G0 X{50 + 3} Z{0.05} F{8000} ; wipe, move close to the bed
+G0 X{50 + 3 * 2} Z0.2 F{8000} ; wipe, move quickly away from the bed
 
 G92 E0
 M221 S100 ; set flow to 100%
